@@ -15,7 +15,6 @@ function listar(){
 }
 
 function salvar(arrayDeUsuarios){
-    usuarios.push(arrayDeUsuarios)
     fs.writeFileSync('./databases/usuarios.json',JSON.stringify(arrayDeUsuarios, null, 4))
     
 }
@@ -60,13 +59,9 @@ function remover(idDoUsuarioParaRemover){
 
 function alterar(novosDados, idUsuario){
     let verifyIndex = usuarios.findIndex(user => user.id === idUsuario)
-    let object = {
-        nome: novosDados.nome,
-        email: novosDados.email,
-        senha: novosDados.senha
-    }
-    usuarios[verifyIndex].nome = object.nome
-    ;// DUVIDAS
+    usuarios[verifyIndex].nome = novosDados.nome
+    usuarios[verifyIndex].email = novosDados.email
+    usuarios[verifyIndex].senha = bcrypt.hashSync(novosDados.senha)
 }
 
 function addEndereco(novoEndereco, idUsuario){
@@ -83,7 +78,9 @@ function removerEndereco(posicaoDoEndereco, idUsuario){
 }
 
 function alterarEndereco(posicaoDoEndereco, novoEndereco, idUsuario){
-// Seu código aqui        
+    let verifyIndex = usuarios.findIndex(user=> user.id === idUsuario)
+    usuarios[verifyIndex].enderecos[posicaoDoEndereco] = novoEndereco
+     
 }
 
 function addFormaDePagamento(novaFormaDePagamento, idUsuario){
@@ -99,7 +96,8 @@ function removerFormaDePagamento(posicaoDaFormaDePagamento, idUsuario){
 }
 
 function alterarFormaDePagamento(novaFormaDePagamento, posicaoDaFormaDePagamento, idUsuario){
-    // DUVIDAS
+    let verifyIndex = usuarios.findIndex(user => user.id == idUsuario)
+    usuarios[verifyIndex].formasDePagamento[posicaoDaFormaDePagamento] = novaFormaDePagamento
 }
 
 const UsuariosServices = {

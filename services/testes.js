@@ -4,20 +4,20 @@ const bcrypt = require('bcrypt')
 const  services = require('./UsuariosServices')
 
 
-function alterar(novosDados, idUsuario){
-        let verifyIndex = usuarios.findIndex(user => user.id === idUsuario)
-        usuarios[verifyIndex].nome = novosDados.nome
-        usuarios[verifyIndex].email = novosDados.email
-        usuarios[verifyIndex].senha = novosDados.senha
+function alterarEndereco(posicaoDoEndereco, novoEndereco, idUsuario){
+        let verifyIndex = usuarios.findIndex(user=> user.id === idUsuario)
+        usuarios[verifyIndex].enderecos[posicaoDoEndereco] = novoEndereco
+                 
+        
         fs.writeFileSync('./databases/usuarios.json',JSON.stringify(usuarios, null, 4))
         ;// USANDO A FUNÇÃO NÃO ESTÁ FUNCIONANDO
     }
 let dados = {
         nome: 'lucas',
         email: 'baladadegames3.0@gmail.com',
-        senha: '254'
+        senha: '354'
         
 }
-alterar(dados, 2)
+alterarEndereco(0, 'minha casa', 2)
 
 

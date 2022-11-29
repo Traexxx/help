@@ -3,9 +3,9 @@
         "id": 2,
         "nome": "lucas",
         "email": "baladadegames3.0@gmail.com",
-        "senha": "254",
+        "senha": "$2b$10$lzE4w7Nf70AnmVON4YDtQ.yQQjF.7jeB/5cW5zwmbnYQidg17GSrW",
         "enderecos": [
-            "Rua das Camélias, 99",
+            "minha casa",
             "teste"
         ],
         "formasDePagamento": [
