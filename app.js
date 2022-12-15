@@ -17,6 +17,9 @@ const express = require('express')
 
 const servidor = express();
 
-servidor.get('./usuarios', ()=>{console.log("chegou uma requisição")} );
+servidor.get('/usuarios', (req, res)=>{
+    console.log("chegou uma requisição");
+    res.send("Vou te mandar uma lista de usuarios... ATUALIZADO")
+} );
 
 servidor.listen(3000)
